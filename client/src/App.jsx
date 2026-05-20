@@ -48,10 +48,9 @@ function App() {
 }, [API_URL]);
 useEffect(() => {
 
-  fetchNotifications();
-
   if (!user) return;
 
+  fetchNotifications();
   fetchFavorites();
   fetchSubscriptions();
 
@@ -122,10 +121,13 @@ const fetchSubscriptions =
     }
   };
 const fetchNotifications = async () => {
+
+  if (!user?.email) return;
+
   try {
 
     const response = await fetch(
-      `${API_URL}/api/notifications`
+      `${API_URL}/api/notifications?email=${user.email}`
     );
 
     const data = await response.json();
