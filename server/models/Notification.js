@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const notificationSchema = new mongoose.Schema(
-  {
+const notificationSchema =
+  new mongoose.Schema({
     title: String,
     date: String,
     pdfUrl: String,
@@ -9,6 +9,11 @@ const notificationSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-  }
-);
-export default mongoose.models.Notification || mongoose.model("Notification",notificationSchema);
+  });
+
+export default
+  mongoose.models.Notification ||
+  mongoose.model(
+    "Notification",
+    notificationSchema
+  );
