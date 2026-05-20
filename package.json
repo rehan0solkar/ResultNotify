@@ -1,3 +1,5 @@
 {
+  "name": "resultnotify-server",
+  "private": true,
   "type": "module"
 }
