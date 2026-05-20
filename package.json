@@ -1,5 +1,8 @@
 {
   "name": "resultnotify-server",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "mongoose": "^8.18.0"
+  }
 }
