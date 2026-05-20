@@ -12,8 +12,4 @@ const subscriptionSchema =
       timestamps: true,
     }
   );
-
-module.exports = mongoose.model(
-  "Subscription",
-  subscriptionSchema
-);
+export default mongoose.models.Subscription || mongoose.model("Subscription",subscriptionSchema);

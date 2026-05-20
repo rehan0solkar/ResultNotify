@@ -31,10 +31,11 @@ function App() {
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 10;
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
   const [savedResults, setSavedResults] = useState([]);
 
   useEffect(() => {
-  fetch("http://localhost:5000/api/results")
+  fetch(`${API_URL}/api/results`)
     .then((res) => res.json())
     .then((data) => {
       setResults(data);
@@ -44,7 +45,7 @@ function App() {
       console.error(error);
       setLoading(false);
     });
-}, []);
+}, [API_URL]);
 useEffect(() => {
 
   fetchNotifications();
@@ -110,7 +111,7 @@ const fetchSubscriptions =
     try {
       const response =
         await axios.get(
-          `http://localhost:5000/api/subscriptions?email=${user.email}`
+          `${API_URL}/api/subscriptions?email=${user.email}`
         );
 
       setSubscriptions(
@@ -124,7 +125,7 @@ const fetchNotifications = async () => {
   try {
 
     const response = await fetch(
-      "http://localhost:5000/api/notifications"
+      `${API_URL}/api/notifications`
     );
 
     const data = await response.json();
@@ -142,7 +143,7 @@ const fetchNotifications = async () => {
     try {
       const response =
         await axios.post(
-          "http://localhost:5000/api/subscriptions",
+          `${API_URL}/api/subscriptions`,
           {
             userEmail: user.email,
             course,
@@ -176,7 +177,7 @@ const fetchNotifications = async () => {
       );
       
       await axios.delete(
-        `http://localhost:5000/api/subscriptions/${id}`
+        `${API_URL}/api/subscriptions?id=${id}`
       );
 
       setSubscriptionMessage(
@@ -209,7 +210,7 @@ setSavedResults((prev) =>
 try {
 
   await fetch(
-    `http://localhost:5000/api/favorites/${result._id}`,
+    `${API_URL}/api/favorites?id=${result._id}`,
     {
       method: "DELETE",
     }
@@ -241,7 +242,7 @@ try {
 const fetchFavorites = async () => {
   try {
     const response = await fetch(
-  `http://localhost:5000/api/favorites?email=${user?.email}`
+  `${API_URL}/api/favorites?email=${user?.email}`
     );
 
     const data = await response.json();
@@ -272,7 +273,7 @@ const saveFavorite = async (result) => {
 
     try {
       await fetch(
-        `http://localhost:5000/api/favorites/${alreadySaved._id}`,
+        `${API_URL}/api/favorites?id=${alreadySaved._id}`,
         {
           method: "DELETE",
         }
@@ -295,7 +296,7 @@ const saveFavorite = async (result) => {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/favorites`,
+        `${API_URL}/api/favorites`,
         {
           method: "POST",
           headers: {
