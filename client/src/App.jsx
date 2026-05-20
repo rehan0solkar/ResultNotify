@@ -31,7 +31,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 10;
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://result-notify.vercel.app";
   const [savedResults, setSavedResults] = useState([]);
 
   useEffect(() => {
