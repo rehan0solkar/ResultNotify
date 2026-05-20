@@ -1,80 +1,50 @@
-const express = require("express");
-const router = express.Router();
+import mongoose from "mongoose";
+import Notification from "../server/models/Notification.js";
 
-const Subscription = require("../models/Subscription");
+const MONGO_URI = process.env.MONGO_URI;
 
-// GET subscriptions
-router.get("/", async (req, res) => {
-  try {
-    const { email } = req.query;
+if (!mongoose.connections[0].readyState) {
+  await mongoose.connect(MONGO_URI);
+}
 
-    const subscriptions = await Subscription.find({
-      userEmail: email,
-    });
+export default async function handler(req, res) {
 
-    res.json(subscriptions);
-
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to fetch subscriptions",
-    });
-  }
-});
-
-// POST subscription
-router.post("/", async (req, res) => {
   try {
 
-    const { userEmail, course, semester } = req.body;
+    if (req.method === "GET") {
 
-    const existingSubscription =
-      await Subscription.findOne({
-        userEmail,
-        course,
-        semester,
-      });
+      const { email } = req.query;
 
-    if (existingSubscription) {
-      return res.status(400).json({
-        message: "Already subscribed",
+      const notifications =
+        await Notification.find({
+          userEmail: email,
+        }).sort({ createdAt: -1 });
+
+      return res.status(200).json(
+        notifications
+      );
+    }
+
+    if (req.method === "POST") {
+
+      const notification =
+        await Notification.create(req.body);
+
+      return res.status(201).json({
+        notification,
       });
     }
 
-    const subscription =
-      await Subscription.create({
-        userEmail,
-        course,
-        semester,
-      });
-
-    res.status(201).json({
-      subscription,
+    return res.status(405).json({
+      message: "Method not allowed",
     });
 
   } catch (error) {
-    res.status(500).json({
-      message: "Failed to create subscription",
+
+    console.log(error);
+
+    return res.status(500).json({
+      message: "Server error",
     });
   }
-});
-
-// DELETE subscription
-router.delete("/", async (req, res) => {
-  try {
-
-    const { id } = req.query;
-
-    await Subscription.findByIdAndDelete(id);
-
-    res.json({
-      message: "Subscription removed",
-    });
-
-  } catch (error) {
-    res.status(500).json({
-      message: "Failed to remove subscription",
-    });
-  }
-});
-
-module.exports = router;
+}
