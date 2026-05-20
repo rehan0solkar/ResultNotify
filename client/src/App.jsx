@@ -107,19 +107,31 @@ useEffect(() => {
 
 const fetchSubscriptions =
   async () => {
+
+    if (!user?.email) return;
+
     try {
+
       const response =
         await axios.get(
           `${API_URL}/api/subscriptions?email=${user.email}`
         );
 
       setSubscriptions(
-        response.data
+        Array.isArray(response.data)
+          ? response.data
+          : []
       );
+
     } catch (error) {
+
       console.log(error);
+
+      setSubscriptions([]);
+
     }
   };
+
 const fetchNotifications = async () => {
 
   if (!user?.email) return;
@@ -132,11 +144,15 @@ const fetchNotifications = async () => {
 
     const data = await response.json();
 
-    setNotifications(data);
+    setNotifications(
+      Array.isArray(data) ? data : []
+    );
 
   } catch (error) {
 
     console.log(error);
+
+    setNotifications([]);
 
   }
 };
@@ -242,16 +258,27 @@ try {
   setConfirmModal(null);
 };
 const fetchFavorites = async () => {
+
+  if (!user?.email) return;
+
   try {
+
     const response = await fetch(
-  `${API_URL}/api/favorites?email=${user?.email}`
+      `${API_URL}/api/favorites?email=${user.email}`
     );
 
     const data = await response.json();
 
-    setSavedResults(data);
+    setSavedResults(
+      Array.isArray(data) ? data : []
+    );
+
   } catch (error) {
-    console.log("Error fetching favorites:", error);
+
+    console.log(error);
+
+    setSavedResults([]);
+
   }
 };
 

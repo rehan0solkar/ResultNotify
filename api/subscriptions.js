@@ -15,45 +15,24 @@ export default async function handler(req, res) {
 
       const { email } = req.query;
 
+      if (!email) {
+        return res.status(200).json([]);
+      }
+
       const subscriptions =
         await Subscription.find({
           userEmail: email,
         });
 
       return res.status(200).json(
-        subscriptions
+        subscriptions || []
       );
     }
 
     if (req.method === "POST") {
 
-      const {
-        userEmail,
-        course,
-        semester,
-      } = req.body;
-
-      const existingSubscription =
-        await Subscription.findOne({
-          userEmail,
-          course,
-          semester,
-        });
-
-      if (existingSubscription) {
-
-        return res.status(400).json({
-          message:
-            "Already subscribed",
-        });
-      }
-
       const subscription =
-        await Subscription.create({
-          userEmail,
-          course,
-          semester,
-        });
+        await Subscription.create(req.body);
 
       return res.status(201).json({
         subscription,
@@ -64,19 +43,15 @@ export default async function handler(req, res) {
 
       const { id } = req.query;
 
-      await Subscription.findByIdAndDelete(
-        id
-      );
+      await Subscription.findByIdAndDelete(id);
 
       return res.status(200).json({
-        message:
-          "Subscription removed",
+        message: "Deleted",
       });
     }
 
     return res.status(405).json({
-      message:
-        "Method not allowed",
+      message: "Method not allowed",
     });
 
   } catch (error) {
@@ -84,7 +59,7 @@ export default async function handler(req, res) {
     console.log(error);
 
     return res.status(500).json({
-      message: "Server error",
+      message: error.message,
     });
   }
 }

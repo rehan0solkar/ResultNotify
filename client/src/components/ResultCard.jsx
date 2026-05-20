@@ -7,9 +7,10 @@ function ResultCard({
   savedResults,
   saveFavorite,
 }) {
-  const isSaved = savedResults.some(
-  (item) => item.pdfUrl === result.pdfUrl
-);
+  const isSaved = Array.isArray(savedResults) &&
+  savedResults.some(
+    (item) => item.pdfUrl === result.pdfUrl
+  );
   return (
     <div
       style={{
