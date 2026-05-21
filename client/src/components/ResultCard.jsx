@@ -40,7 +40,9 @@ function ResultCard({
       <h2
         style={{
           marginBottom: "15px",
-          fontSize: "22px",
+          fontSize: window.innerWidth < 768 ? "16px" : "22px",
+          lineHeight: "1.4",
+          wordBreak: "break-word",
         }}
       >
         {result.title}
@@ -59,6 +61,8 @@ function ResultCard({
         style={{
           display: "flex",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "12px",
           alignItems: "center",
           marginTop: "18px",
           width: "100%",

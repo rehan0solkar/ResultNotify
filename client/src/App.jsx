@@ -667,15 +667,16 @@ const recentResults = results.filter(
       }
       `}
     </style>
-
-    <div
-      style={{
-        padding: "20px",
-        backgroundColor: "#0f172a",
-        minHeight: "100vh",
-        color: "white",
-      }}
-    >
+      <div
+  style={{
+    padding: screenWidth < 768 ? "14px" : "20px",
+    backgroundColor: "#0f172a",
+    minHeight: "100vh",
+    color: "white",
+    width: "100%",
+    overflowX: "hidden",
+  }}
+>
       {confirmModal && (
   <div style={overlayStyle}>
 
@@ -778,7 +779,7 @@ const recentResults = results.filter(
         backgroundColor: "#0f172a",
         padding: "30px",
         borderRadius: "16px",
-        width: "400px",
+        width: screenWidth < 768 ? "92%" : "400px",
         border: "1px solid #334155",
         boxShadow: "0 0 25px rgba(37,99,235,0.3)",
       }}
@@ -977,7 +978,7 @@ const recentResults = results.filter(
     <div
       key={index}
       style={{
-        flex: "1 1 180px",
+        flex: screenWidth < 768 ? "1 1 100%" : "1 1 180px",
         maxWidth: "220px",
         minWidth:
         screenWidth < 768
@@ -1541,7 +1542,8 @@ WebkitBackdropFilter:
       position: "fixed",
       top: 0,
       right: 0,
-      width: "280px",
+      width: screenWidth < 768 ? "85%" : "280px",
+maxWidth: "280px",
       height: "100%",
       backgroundColor: "#111827",
       padding: "30px 20px",
@@ -1698,7 +1700,10 @@ WebkitBackdropFilter:
       <h1
         style={{
           textAlign: "center",
-          fontSize: "52px",
+          fontSize: screenWidth < 768 ? "34px" : "52px",
+          lineHeight: "1.1",
+          wordBreak: "break-word",
+          paddingInline: "10px",
           marginBottom: "30px",
         }}
       >
@@ -1744,7 +1749,7 @@ WebkitBackdropFilter:
     <div
       key={index}
       style={{
-        flex: "1 1 180px",
+        flex: screenWidth < 768 ? "1 1 100%" : "1 1 180px",
         maxWidth: "220px",
         minWidth:
         screenWidth < 768
@@ -1802,6 +1807,8 @@ WebkitBackdropFilter:
     display: "flex",
     gap: "15px",
     justifyContent: "center",
+    width: "100%",
+    overflow: "hidden",
     alignItems: "center",
     flexWrap: "wrap",
     marginBottom: "30px",
