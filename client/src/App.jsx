@@ -1514,7 +1514,7 @@ const recentResults = results.filter(
     <FaBars />
   </button>
   
-  <>
+  {menuOpen && (
   <div
     onClick={() => setMenuOpen(false)}
     style={{
@@ -1534,6 +1534,7 @@ const recentResults = results.filter(
       transition: "0.25s ease",
     }}
   />
+)}
 
   <div
     ref={menuRef}
@@ -1693,8 +1694,6 @@ const recentResults = results.filter(
 
 </div>
     </div>
-    
-  </>
   
 </div>
       <h1
