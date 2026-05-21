@@ -763,8 +763,7 @@ const recentResults = results.filter(
       top: 0,
       left: 0,
       width: "100%",
-      height: "100vh",
-      boxSizing: "border-box",
+      height: "100%",
       backgroundColor: "rgba(0,0,0,0.7)",
       display: "flex",
       justifyContent: "center",
@@ -883,8 +882,7 @@ const recentResults = results.filter(
       top: 0,
       left: 0,
       width: "100%",
-      height: "100vh",
-      boxSizing: "border-box",
+      height: "100%",
       backgroundColor:
         "rgba(0,0,0,0.7)",
       display: "flex",
@@ -1331,8 +1329,7 @@ const recentResults = results.filter(
       top: 0,
       left: 0,
       width: "100%",
-      height: "100vh",
-      boxSizing: "border-box",
+      height: "100%",
       backgroundColor: "rgba(0,0,0,0.7)",
       display: "flex",
       justifyContent: "center",
@@ -1463,6 +1460,8 @@ const recentResults = results.filter(
 )}
       <div
   style={{
+  position: "sticky",
+  top: 0,
   zIndex: 2000,
   display: "flex",
   justifyContent: "space-between",
@@ -1514,7 +1513,7 @@ const recentResults = results.filter(
     <FaBars />
   </button>
   
-  {menuOpen && (
+  <>
   <div
     onClick={() => setMenuOpen(false)}
     style={{
@@ -1526,7 +1525,7 @@ const recentResults = results.filter(
       backgroundColor: menuOpen
         ? "rgba(0,0,0,0.5)"
         : "rgba(0,0,0,0)",
-      zIndex: 3000,
+      zIndex: 998,
       opacity: menuOpen ? 1 : 0,
       pointerEvents: menuOpen
         ? "auto"
@@ -1534,7 +1533,6 @@ const recentResults = results.filter(
       transition: "0.25s ease",
     }}
   />
-)}
 
   <div
     ref={menuRef}
@@ -1543,12 +1541,11 @@ const recentResults = results.filter(
       top: 0,
       right: 0,
       width: screenWidth < 768 ? "85%" : "280px",
-      maxWidth: "280px",
-      height: "100vh",
-      boxSizing: "border-box",
+maxWidth: "280px",
+      height: "100%",
       backgroundColor: "#111827",
       padding: "30px 20px",
-      zIndex: 3001,
+      zIndex: 999,
       boxShadow:
         "-5px 0 20px rgba(0,0,0,0.4)",
 
@@ -1593,7 +1590,7 @@ const recentResults = results.filter(
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "auto",
+    height: "100%",
   }}
 >
   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -1694,6 +1691,8 @@ const recentResults = results.filter(
 
 </div>
     </div>
+    
+  </>
   
 </div>
       <h1
@@ -1803,15 +1802,15 @@ const recentResults = results.filter(
   
       <div
   style={{
-  display: "flex",
-  gap: "15px",
-  justifyContent: "center",
-  alignItems: "center",
-  flexWrap: "wrap",
-  marginBottom: "30px",
-  width: "100%",
-  maxWidth: "100%",
-}}
+    display: "flex",
+    gap: "15px",
+    justifyContent: "center",
+    width: "100%",
+    overflow: "hidden",
+    alignItems: "center",
+    flexWrap: "wrap",
+    marginBottom: "30px",
+  }}
 >
   <input
     type="text"
@@ -1820,7 +1819,7 @@ const recentResults = results.filter(
     onChange={(e) => {setSearch(e.target.value);setCurrentPage(1);}}
     style={{
   padding: "12px",
-  width: screenWidth < 768 ? "100%" : "140px",
+  width: "100%",
 maxWidth: "900px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1845,7 +1844,7 @@ onMouseLeave={(e) => {
     onChange={(e) => {setCourseFilter(e.target.value);setCurrentPage(1);}}
     style={{
   padding: "12px",
-  width: screenWidth < 768 ? "100%" : "140px",
+  width: "100%",
 maxWidth: "350px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1877,7 +1876,7 @@ onMouseLeave={(e) => {
     onChange={(e) => {setSemesterFilter(e.target.value);setCurrentPage(1);}}
     style={{
   padding: "12px",
-  width: screenWidth < 768 ? "100%" : "140px",
+  width: "100%",
 maxWidth: "125px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1910,7 +1909,7 @@ onMouseLeave={(e) => {
   onChange={(e) => {setSortOption(e.target.value);setCurrentPage(1);}}
   style={{
     padding: "12px",
-    width: screenWidth < 768 ? "100%" : "140px",
+    width: "100%",
 maxWidth: "125px",
     backgroundColor: "#1e293b",
     color: "white",
@@ -1939,7 +1938,7 @@ onMouseLeave={(e) => {
   onChange={(e) => { setYearFilter(e.target.value);setCurrentPage(1);}}
   style={{
   padding: "10px",
-  width: screenWidth < 768 ? "100%" : "140px",
+  width: "100%",
 maxWidth: "125px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1969,7 +1968,7 @@ onMouseLeave={(e) => {
   onChange={(e) => { setPatternFilter(e.target.value); setCurrentPage(1);}}
   style={{
   padding: "10px",
-  width: screenWidth < 768 ? "100%" : "140px",
+  width: "100%",
 maxWidth: "125px",
   backgroundColor: "#1e293b",
   color: "white",
