@@ -667,14 +667,14 @@ const recentResults = results.filter(
       }
       `}
     </style>
-      <div
+    <div
   style={{
     padding: screenWidth < 768 ? "14px" : "20px",
     backgroundColor: "#0f172a",
     minHeight: "100vh",
     color: "white",
-    width: "100%",
     overflowX: "hidden",
+    boxSizing: "border-box",
   }}
 >
       {confirmModal && (
@@ -1466,15 +1466,13 @@ const recentResults = results.filter(
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: "30px",
-  padding: "14px 20px",
+  marginBottom: "20px",
+  padding: screenWidth < 768 ? "12px 14px" : "14px 20px",
   borderBottom: "1px solid #1e293b",
   background:
   "rgba(15, 23, 42, 0.45)",
-backdropFilter: "blur(14px)",
-WebkitBackdropFilter:
-  "blur(14px)",
   backdropFilter: "blur(10px)",
+  WebkitBackdropFilter: "blur(10px)",
 }}
 >
   
