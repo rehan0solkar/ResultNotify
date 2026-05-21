@@ -1463,7 +1463,7 @@ const recentResults = results.filter(
 )}
       <div
   style={{
-  position: "sticky",
+  position: "relative",
   top: 0,
   zIndex: 2000,
   display: "flex",
