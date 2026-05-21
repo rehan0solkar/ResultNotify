@@ -1803,15 +1803,15 @@ const recentResults = results.filter(
   
       <div
   style={{
-    display: "flex",
-    gap: "15px",
-    justifyContent: "center",
-    minWidth: screenWidth < 768 ? "100%" : "140px",
-    overflow: "hidden",
-    alignItems: "center",
-    flexWrap: "wrap",
-    marginBottom: "30px",
-  }}
+  display: "flex",
+  gap: "15px",
+  justifyContent: "center",
+  alignItems: "center",
+  flexWrap: "wrap",
+  marginBottom: "30px",
+  width: "100%",
+  maxWidth: "100%",
+}}
 >
   <input
     type="text"
@@ -1820,7 +1820,7 @@ const recentResults = results.filter(
     onChange={(e) => {setSearch(e.target.value);setCurrentPage(1);}}
     style={{
   padding: "12px",
-  minWidth: screenWidth < 768 ? "100%" : "140px",
+  width: screenWidth < 768 ? "100%" : "140px",
 maxWidth: "900px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1845,7 +1845,7 @@ onMouseLeave={(e) => {
     onChange={(e) => {setCourseFilter(e.target.value);setCurrentPage(1);}}
     style={{
   padding: "12px",
-  minWidth: screenWidth < 768 ? "100%" : "140px",
+  width: screenWidth < 768 ? "100%" : "140px",
 maxWidth: "350px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1877,7 +1877,7 @@ onMouseLeave={(e) => {
     onChange={(e) => {setSemesterFilter(e.target.value);setCurrentPage(1);}}
     style={{
   padding: "12px",
-  minWidth: screenWidth < 768 ? "100%" : "140px",
+  width: screenWidth < 768 ? "100%" : "140px",
 maxWidth: "125px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1910,7 +1910,7 @@ onMouseLeave={(e) => {
   onChange={(e) => {setSortOption(e.target.value);setCurrentPage(1);}}
   style={{
     padding: "12px",
-    minWidth: screenWidth < 768 ? "100%" : "140px",
+    width: screenWidth < 768 ? "100%" : "140px",
 maxWidth: "125px",
     backgroundColor: "#1e293b",
     color: "white",
@@ -1939,7 +1939,7 @@ onMouseLeave={(e) => {
   onChange={(e) => { setYearFilter(e.target.value);setCurrentPage(1);}}
   style={{
   padding: "10px",
-  minWidth: screenWidth < 768 ? "100%" : "140px",
+  width: screenWidth < 768 ? "100%" : "140px",
 maxWidth: "125px",
   backgroundColor: "#1e293b",
   color: "white",
@@ -1969,7 +1969,7 @@ onMouseLeave={(e) => {
   onChange={(e) => { setPatternFilter(e.target.value); setCurrentPage(1);}}
   style={{
   padding: "10px",
-  minWidth: screenWidth < 768 ? "100%" : "140px",
+  width: screenWidth < 768 ? "100%" : "140px",
 maxWidth: "125px",
   backgroundColor: "#1e293b",
   color: "white",
