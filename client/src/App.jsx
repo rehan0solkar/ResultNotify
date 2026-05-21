@@ -1594,7 +1594,7 @@ const recentResults = results.filter(
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "100%",
+    height: "auto",
   }}
 >
   <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
