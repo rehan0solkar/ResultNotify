@@ -29,6 +29,12 @@
     font-size: 16px;
   }
 }
+html,
+body,
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
