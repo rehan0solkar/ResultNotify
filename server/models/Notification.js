@@ -3,8 +3,12 @@ import mongoose from "mongoose";
 const notificationSchema = new mongoose.Schema(
   {
     userEmail: String,
+    title: String,
     message: String,
-    read: Boolean,
+    read: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
