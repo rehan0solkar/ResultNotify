@@ -1,14 +1,17 @@
 import mongoose from "mongoose";
 
-const favoriteSchema = new mongoose.Schema({
-  title: String,
-  pdfUrl: String,
-  date: String,
-  userEmail: String,
-  createdAt: {
-    type: Date,
-    default: Date.now,
+const favoriteSchema = new mongoose.Schema(
+  {
+    userEmail: String,
+    title: String,
+    pdfUrl: String,
+    resultDate: String,
   },
-});
+  { timestamps: true }
+);
 
-export default mongoose.models.Favorite || mongoose.model("Favorite", favoriteSchema);
+const Favorite =
+  mongoose.models.Favorite ||
+  mongoose.model("Favorite", favoriteSchema);
+
+export default Favorite;

@@ -1,19 +1,16 @@
 import mongoose from "mongoose";
 
-const notificationSchema =
-  new mongoose.Schema({
-    title: String,
-    date: String,
-    pdfUrl: String,
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-  });
+const notificationSchema = new mongoose.Schema(
+  {
+    userEmail: String,
+    message: String,
+    read: Boolean,
+  },
+  { timestamps: true }
+);
 
-export default
+const Notification =
   mongoose.models.Notification ||
-  mongoose.model(
-    "Notification",
-    notificationSchema
-  );
+  mongoose.model("Notification", notificationSchema);
+
+export default Notification;
