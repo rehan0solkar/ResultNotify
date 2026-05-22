@@ -20,6 +20,17 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "POST") {
+      const existingFavorite =
+  await Favorite.findOne({
+    userEmail: req.body.userEmail,
+    pdfUrl: req.body.pdfUrl,
+  });
+
+if (existingFavorite) {
+  return res.status(409).json({
+    message: "Already saved",
+  });
+}
       const favorite = await Favorite.create(req.body);
 
       return res.status(201).json({
@@ -30,7 +41,13 @@ export default async function handler(req, res) {
     if (req.method === "DELETE") {
       const { id } = req.query;
 
-      await Favorite.findByIdAndDelete(id);
+      if (!id) {
+  return res.status(400).json({
+    message: "Missing favorite id",
+  });
+}
+
+await Favorite.findByIdAndDelete(id);
 
       return res.status(200).json({
         message: "Favorite removed",

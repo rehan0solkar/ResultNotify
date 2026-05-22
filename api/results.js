@@ -31,9 +31,9 @@ export default async function handler(
     }
 
     const results =
-      await Result.find().sort({
-        _id: -1,
-      });
+  await Result.find()
+    .sort({ _id: -1 })
+    .lean();
 
     res.status(200).json(results);
 

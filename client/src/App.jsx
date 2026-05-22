@@ -294,33 +294,31 @@ const saveFavorite = async (result) => {
 
   if (alreadySaved) {
 
-    setSavedResults((prev) =>
-      prev.filter(
-        (item) => item.pdfUrl !== result.pdfUrl
-      )
+  setSavedResults((prev) =>
+    prev.filter(
+      (item) => item.pdfUrl !== result.pdfUrl
+    )
+  );
+
+  try {
+
+    await fetch(
+      `${API_URL}/api/favorites?id=${alreadySaved._id}`,
+      {
+        method: "DELETE",
+      }
     );
 
-    try {
-      await fetch(
-        `${API_URL}/api/favorites?id=${alreadySaved._id}`,
-        {
-          method: "DELETE",
-        }
-      );
+    toast.success("Result removed");
 
-      toast.success("Result removed");
+  } catch (error) {
 
-    } catch (error) {
-      console.log(error);
-      toast.error("Failed to remove result");
-    }
+    console.log(error);
 
-  } else {
+    toast.error("Failed to remove result");
+  }
 
-    setSavedResults((prev) => [
-      ...prev,
-      result,
-    ]);
+} else {
 
     try {
 
@@ -339,14 +337,10 @@ const saveFavorite = async (result) => {
       );
 
       const data = await response.json();
-
-      setSavedResults((prev) =>
-        prev.map((item) =>
-          item.pdfUrl === result.pdfUrl
-            ? data.favorite
-            : item
-        )
-      );
+      setSavedResults((prev) => [
+        ...prev,
+        data.favorite,
+      ]);
 
       toast.success("Result saved");
 
@@ -674,7 +668,6 @@ const recentResults = results.filter(
     minHeight: "100vh",
     color: "white",
     width: "100%",
-    overflowX: "hidden",
   }}
 >
       {confirmModal && (
@@ -1808,7 +1801,6 @@ maxWidth: "280px",
     gap: "15px",
     justifyContent: "center",
     width: "100%",
-    overflow: "hidden",
     alignItems: "center",
     flexWrap: "wrap",
     marginBottom: "30px",

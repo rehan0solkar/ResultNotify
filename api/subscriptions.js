@@ -30,7 +30,18 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "POST") {
+      const existingSubscription =
+  await Subscription.findOne({
+    userEmail: req.body.userEmail,
+    course: req.body.course,
+    semester: req.body.semester,
+  });
 
+if (existingSubscription) {
+  return res.status(409).json({
+    message: "Already subscribed",
+  });
+}
       const subscription =
         await Subscription.create(req.body);
 

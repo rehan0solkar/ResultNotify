@@ -40,7 +40,7 @@ function ResultCard({
       <h2
         style={{
           marginBottom: "15px",
-          fontSize: window.innerWidth < 768 ? "16px" : "22px",
+          fontSize: "16px",
           lineHeight: "1.4",
           wordBreak: "break-word",
         }}
