@@ -8,4 +8,5 @@ const ResultSchema = new mongoose.Schema({
     unique: true,
   },
 });
+
 export default mongoose.models.Result || mongoose.model("Result",ResultSchema);

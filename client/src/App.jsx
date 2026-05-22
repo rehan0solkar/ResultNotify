@@ -289,8 +289,11 @@ const saveFavorite = async (result) => {
   }
 
   const alreadySaved = savedResults.find(
-    (item) => item.pdfUrl === result.pdfUrl
-  );
+(item) =>
+item &&
+item.pdfUrl &&
+item.pdfUrl === result.pdfUrl
+)
 
   if (alreadySaved) {
 
@@ -1462,11 +1465,9 @@ const recentResults = results.filter(
   marginBottom: "30px",
   padding: "14px 20px",
   borderBottom: "1px solid #1e293b",
-  background:
-  "rgba(15, 23, 42, 0.45)",
-backdropFilter: "blur(14px)",
-WebkitBackdropFilter:
-  "blur(14px)",
+  backgroundColor: "#0f172a",
+  WebkitBackdropFilter:
+  "blur(10px)",
   backdropFilter: "blur(10px)",
 }}
 >

@@ -8,9 +8,13 @@ function ResultCard({
   saveFavorite,
 }) {
   const isSaved = Array.isArray(savedResults) &&
-  savedResults.some(
-    (item) => item.pdfUrl === result.pdfUrl
-  );
+  Array.isArray(savedResults) &&
+savedResults.some(
+(item) =>
+item &&
+item.pdfUrl &&
+item.pdfUrl === result.pdfUrl
+)
   return (
     <div
       style={{
