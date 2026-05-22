@@ -17,18 +17,10 @@ export default async function handler(
   req,
   res
 ) {
-
   try {
-
-    if (
-      mongoose.connection.readyState
-      !== 1
-    ) {
-
-      await mongoose.connect(
-        process.env.MONGO_URI
-      );
-    }
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI);
+  } 
 
     const results =
   await Result.find()
@@ -38,9 +30,9 @@ export default async function handler(
     res.status(200).json(results);
 
   } catch (error) {
-
-    res.status(500).json({
-      message: error.message,
-    });
-  }
+  console.error(error);
+  return res.status(500).json({
+    error: error.message,
+  });
+}
 }
