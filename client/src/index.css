@@ -32,8 +32,9 @@
 html,
 body,
 #root {
-  
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,7 +80,6 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  text-align: center;
 }
 
 h1,

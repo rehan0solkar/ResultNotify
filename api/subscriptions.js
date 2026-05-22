@@ -3,7 +3,7 @@ import Subscription from "../server/models/Subscription.js";
 
 const MONGO_URI = process.env.MONGO_URI;
 
-if (!mongoose.connections[0].readyState) {
+if (mongoose.connection.readyState !== 1) {
   await mongoose.connect(MONGO_URI);
 }
 

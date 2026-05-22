@@ -356,8 +356,6 @@ if (data.favorite) {
 
 }
 
-      toast.success("Result saved");
-
     } catch (error) {
       console.log(error);
       toast.error("Failed to save result");
@@ -677,12 +675,15 @@ const recentResults = results.filter(
     </style>
       <div
   style={{
-    padding: screenWidth < 768 ? "14px" : "20px",
-    backgroundColor: "#0f172a",
-    minHeight: "100vh",
-    color: "white",
-    width: "100%",
-  }}
+  width: "100%",
+  maxWidth: "1400px",
+  margin: "0 auto",
+  padding:
+    screenWidth < 768
+      ? "12px"
+      : "20px",
+  overflowX: "hidden",
+}}
 >
       {confirmModal && (
   <div style={overlayStyle}>
@@ -1468,6 +1469,8 @@ screenWidth < 768
       <div
   style={{
   position: "sticky",
+  left: 0,
+  right: 0,
   top: 0,
   zIndex: 2000,
   display: "flex",
@@ -1547,8 +1550,8 @@ screenWidth < 768
       position: "fixed",
       top: 0,
       right: 0,
-      width: screenWidth < 768 ? "85%" : "280px",
-maxWidth: "280px",
+      width: screenWidth < 768 ? "260px" : "280px",
+maxWidth: "100vw",
       height: "100%",
       backgroundColor: "#111827",
       padding: "30px 20px",
@@ -1826,7 +1829,10 @@ screenWidth < 768
     style={{
   padding: "12px",
   width: "100%",
-maxWidth: "900px",
+maxWidth:
+  screenWidth < 768
+    ? "100%"
+    : "900px",
   backgroundColor: "#1e293b",
   color: "white",
   border: "1px solid #475569",
