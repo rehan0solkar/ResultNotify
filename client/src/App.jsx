@@ -340,10 +340,21 @@ item.pdfUrl === result.pdfUrl
       );
 
       const data = await response.json();
-      setSavedResults((prev) => [
-        ...prev,
-        data.favorite,
-      ]);
+
+if (data.favorite) {
+
+  setSavedResults((prev) => [
+    ...prev,
+    data.favorite,
+  ]);
+
+  toast.success("Result saved");
+
+} else {
+
+  toast.error("Failed to save");
+
+}
 
       toast.success("Result saved");
 
@@ -974,12 +985,12 @@ const recentResults = results.filter(
     <div
       key={index}
       style={{
-        flex: screenWidth < 768 ? "1 1 100%" : "1 1 180px",
+        flex: screenWidth < 768 ? "1 1 calc(50% - 10px)" : "1 1 180px",
         maxWidth: "220px",
         minWidth:
-        screenWidth < 768
-        ? "140px" 
-        : "180px",
+screenWidth < 768
+? "0"
+: "180px",
         backgroundColor: "#111827",
         padding:
         screenWidth < 768 
@@ -1743,12 +1754,12 @@ maxWidth: "280px",
     <div
       key={index}
       style={{
-        flex: screenWidth < 768 ? "1 1 100%" : "1 1 180px",
+        flex: screenWidth < 768 ? "1 1 calc(50% - 10px)" : "1 1 180px",
         maxWidth: "220px",
         minWidth:
-        screenWidth < 768
-        ? "140px" 
-        : "180px",
+screenWidth < 768
+? "0"
+: "180px",
         backgroundColor: "#111827",
         padding:
         screenWidth < 768 
