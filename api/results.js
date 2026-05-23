@@ -1,4 +1,4 @@
-import { connectDB } from "../lib/db.js";
+import mongoose from "mongoose";
 
 const ResultSchema = new mongoose.Schema({
   title: String,
@@ -18,7 +18,9 @@ export default async function handler(
   res
 ) {
   try {
-    await connectDB(); 
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI);
+  } 
 
     const results =
   await Result.find()

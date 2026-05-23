@@ -1,11 +1,13 @@
-import { connectDB } from "../lib/db.js";
-import Notification from "../models/Notification.js";
+import mongoose from "mongoose";
+import Notification from "../server/models/Notification.js";
 
 const MONGO_URI = process.env.MONGO_URI;
 
 export default async function handler(req, res) {
   try {
-    await connectDB();
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI);
+  }
 
     if (req.method === "GET") {
       const { email } = req.query;
