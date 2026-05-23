@@ -1,5 +1,5 @@
 import { connectDB } from "../lib/db.js";
-import Favorite from "../server/models/Favorite.js";
+import Favorite from "../models/Favorite.js";
 
 export default async function handler(req, res) {
   try {

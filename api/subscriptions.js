@@ -1,5 +1,5 @@
 import { connectDB } from "../lib/db.js";
-import Subscription from "../server/models/Subscription.js";
+import Subscription from "../models/Subscription.js";
 
 export default async function handler(req, res) {
   try {

@@ -1,5 +1,5 @@
 import { connectDB } from "../lib/db.js";
-import Notification from "../server/models/Notification.js";
+import Notification from "../models/Notification.js";
 
 export default async function handler(req, res) {
   try {
