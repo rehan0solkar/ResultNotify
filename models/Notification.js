@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const notificationSchema = new mongoose.Schema(
   {
     userEmail: String,
@@ -12,6 +11,5 @@ const notificationSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
 export default mongoose.models.Notification ||
 mongoose.model("Notification", notificationSchema);

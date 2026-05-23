@@ -11,7 +11,6 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 });
-
 const User =
 mongoose.models.User ||
 mongoose.model("User", userSchema);

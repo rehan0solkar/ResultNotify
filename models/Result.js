@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const ResultSchema = new mongoose.Schema({
   title: String,
   date: String,
@@ -8,5 +7,4 @@ const ResultSchema = new mongoose.Schema({
     unique: true,
   },
 });
-
 export default mongoose.models.Result || mongoose.model("Result",ResultSchema);
