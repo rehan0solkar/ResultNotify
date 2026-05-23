@@ -1,6 +1,8 @@
 import { connectDB } from "../lib/db.js";
 import Subscription from "../models/Subscription.js";
 
+const MONGO_URI = process.env.MONGO_URI;
+
 export default async function handler(req, res) {
   try {
     await connectDB();
