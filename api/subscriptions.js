@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Subscription from "../server/models/Subscription.js";
+import Subscription from "../models/Subscription.js";
 
 const MONGO_URI = process.env.MONGO_URI;
 

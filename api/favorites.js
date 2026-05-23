@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Favorite from "../server/models/Favorite.js";
+import Favorite from "../models/Favorite.js";
 
 const MONGO_URI = process.env.MONGO_URI;
 

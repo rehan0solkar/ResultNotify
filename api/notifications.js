@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Notification from "../server/models/Notification.js";
+import Notification from "../models/Notification.js";
 
 const MONGO_URI = process.env.MONGO_URI;
 
