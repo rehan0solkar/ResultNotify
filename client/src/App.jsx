@@ -673,17 +673,14 @@ const recentResults = results.filter(
       }
       `}
     </style>
-      <div
-  style={{
-  width: "100%",
-  maxWidth: "1400px",
-  margin: "0 auto",
-  padding:
-    screenWidth < 768
-      ? "12px"
-      : "20px",
-}}
->
+<div
+      style={{
+        padding: "12px",
+        backgroundColor: "#0f172a",
+        minHeight: "100vh",
+        color: "white",
+      }}
+    >
       {confirmModal && (
   <div style={overlayStyle}>
 
@@ -1468,9 +1465,9 @@ screenWidth < 768
       <div
   style={{
   position: "sticky",
+  top: 0,
   left: 0,
   right: 0,
-  top: 0,
   zIndex: 2000,
   display: "flex",
   justifyContent: "space-between",
@@ -1478,8 +1475,9 @@ screenWidth < 768
   marginBottom: "30px",
   padding: "14px 20px",
   borderBottom: "1px solid #1e293b",
-  backgroundColor: "#0f172a",
-  WebkitBackdropFilter:
+  background:
+  "rgba(15, 23, 42, 0.45)",
+WebkitBackdropFilter:
   "blur(10px)",
   backdropFilter: "blur(10px)",
 }}
