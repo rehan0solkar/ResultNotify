@@ -1,13 +1,9 @@
-import mongoose from "mongoose";
+import { connectDB } from "../lib/db.js";
 import Subscription from "../server/models/Subscription.js";
-
-const MONGO_URI = process.env.MONGO_URI;
 
 export default async function handler(req, res) {
   try {
-  if (!mongoose.connections[0].readyState) {
-    await mongoose.connect(process.env.MONGO_URI);
-  }
+    await connectDB();
 
     if (req.method === "GET") {
 
