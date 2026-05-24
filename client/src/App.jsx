@@ -673,12 +673,13 @@ const recentResults = results.filter(
       }
       `}
     </style>
+    
 <div
-      style={{
-        padding: "12px",
-        backgroundColor: "#0f172a",
-        minHeight: "100vh",
-        color: "white",
+  style={{
+    backgroundColor: "#0f172a",
+    minHeight: "100vh",
+    color: "white",
+    overflowX: "hidden",
       }}
     >
       {confirmModal && (
@@ -1464,19 +1465,20 @@ screenWidth < 768
 )}
       <div
   style={{
-  position: "sticky",
+  position: "fixed",
   top: 0,
-  left: 0,
-  right: 0,
   zIndex: 2000,
+  width: "100%",
+  boxSizing: "border-box",
   display: "flex",
+  flexWrap: "nowrap",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: "30px",
+  marginBottom: "0px",
   padding: "14px 20px",
   borderBottom: "1px solid #1e293b",
   background:
-  "rgba(15, 23, 42, 0.45)",
+"rgba(15, 23, 42, 0.2)",
 WebkitBackdropFilter:
   "blur(10px)",
   backdropFilter: "blur(10px)",
@@ -1547,8 +1549,8 @@ WebkitBackdropFilter:
       position: "fixed",
       top: 0,
       right: 0,
-      width: screenWidth < 768 ? "260px" : "280px",
-maxWidth: "100vw",
+      width: screenWidth < 768 ? "78vw" : "280px",
+      maxWidth: "100%",
       height: "100%",
       backgroundColor: "#111827",
       padding: "30px 20px",
@@ -1700,9 +1702,13 @@ maxWidth: "100vw",
     </div>
     
   </>
-  
-</div>
-      <h1
+  </div>
+<div style={{ backgroundColor: "#0f172a",height: "40px", }}></div>
+<div
+  style={{
+    padding: "12px",
+  }}
+>     <h1
         style={{
           textAlign: "center",
           fontSize: screenWidth < 768 ? "34px" : "52px",
@@ -1847,21 +1853,24 @@ onMouseLeave={(e) => {
   e.currentTarget.style.transform = "translateY(0px)";
 }}
   />
-  
-  <select
-    value={courseFilter}
-    onChange={(e) => {setCourseFilter(e.target.value);setCurrentPage(1);}}
-    style={{
-  padding: "12px",
-  width: "100%",
-maxWidth: "350px",
-  backgroundColor: "#1e293b",
-  color: "white",
-  border: "1px solid #475569",
-  borderRadius: "10px",
-  outline: "none",
-  fontSize: "16px",
-  appearance: "none",
+  <input
+  list="course-options"
+  value={courseFilter}
+  onChange={(e) => {
+    setCourseFilter(e.target.value);
+    setCurrentPage(1);
+  }}
+  placeholder="Select Course"
+  style={{
+    padding: "12px",
+    borderRadius: "10px",
+    border: "1px solid #334155",
+    backgroundColor: "#1e293b",
+    color: "white",
+    width: "100%",
+    maxWidth: "350px",
+    fontSize: "16px",
+    outline: "none",
   transition: "0.2s ease",
 cursor: "pointer",
     }}
@@ -1872,13 +1881,17 @@ cursor: "pointer",
 onMouseLeave={(e) => {
   e.currentTarget.style.transform = "translateY(0px)";
 }}
-  >
-    {courses.map((course, index) => (
-      <option key={index} value={course}>
-        {course}
-      </option>
-    ))}
-  </select>
+/>
+
+<datalist id="course-options">
+
+  {courses.map((course, index) => (
+    <option
+      key={index}
+      value={course}
+    />
+  ))}
+</datalist>
 
   <select
     value={semesterFilter}
@@ -2121,41 +2134,153 @@ onMouseLeave={(e) => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    gap: "15px",
-    marginTop: "30px",
-    marginBottom: "40px",
+    gap: "10px",
+    marginTop: "35px",
+    marginBottom: "45px",
     flexWrap: "wrap",
   }}
 >
   <button
     onClick={() =>
-      setCurrentPage((prev) => Math.max(prev - 1, 1))
+      setCurrentPage((prev) =>
+        Math.max(prev - 1, 1)
+      )
     }
     disabled={currentPage === 1}
     style={{
-      padding: "10px 18px",
-      backgroundColor: "#be6d0f",
+      width: "46px",
+      height: "46px",
+      borderRadius: "50%",
+      border: "1px solid #334155",
+      backgroundColor:
+        currentPage === 1
+          ? "#1e293b"
+          : "#be6d0f",
       color: "white",
-      border: "none",
-      borderRadius: "8px",
+      cursor: "pointer",
       opacity: currentPage === 1 ? 0.5 : 1,
-    transition: "0.2s ease",
-cursor: "pointer",
+      fontSize: "18px",
     }}
-    onMouseEnter={(e) => {
-  e.currentTarget.style.transform = "translateY(-2px)";
-}}
-
-onMouseLeave={(e) => {
-  e.currentTarget.style.transform = "translateY(0px)";
-}}
   >
-    Previous
+    ←
   </button>
 
-  <span style={{ fontSize: "18px", fontWeight: "bold" }}>
-    Page {currentPage} of {totalPages}
-  </span>
+  <button
+    onClick={() => setCurrentPage(1)}
+    style={{
+      width: "46px",
+      height: "46px",
+      borderRadius: "50%",
+      border:
+        currentPage === 1
+          ? "2px solid #60a5fa"
+          : "1px solid #334155",
+      backgroundColor:
+        currentPage === 1
+          ? "#2563eb"
+          : "#111827",
+      color: "white",
+      cursor: "pointer",
+      fontWeight:
+        currentPage === 1
+          ? "bold"
+          : "normal",
+    }}
+  >
+    1
+  </button>
+
+  {currentPage > 4 && (
+    <span
+      style={{
+        color: "#94a3b8",
+        fontSize: "18px",
+      }}
+    >
+      ...
+    </span>
+  )}
+
+  {Array.from(
+    { length: totalPages },
+    (_, index) => index + 1
+  )
+    .filter(
+      (page) =>
+        page !== 1 &&
+        page !== totalPages &&
+        page >= currentPage - 1 &&
+        page <= currentPage + 1
+    )
+    .map((page) => (
+      <button
+        key={page}
+        onClick={() =>
+          setCurrentPage(page)
+        }
+        style={{
+          width: "46px",
+          height: "46px",
+          borderRadius: "50%",
+          border:
+            currentPage === page
+              ? "2px solid #60a5fa"
+              : "1px solid #334155",
+          backgroundColor:
+            currentPage === page
+              ? "#2563eb"
+              : "#111827",
+          color: "white",
+          cursor: "pointer",
+          fontWeight:
+            currentPage === page
+              ? "bold"
+              : "normal",
+        }}
+      >
+        {page}
+      </button>
+    ))}
+
+  {currentPage < totalPages - 3 && (
+    <span
+      style={{
+        color: "#94a3b8",
+        fontSize: "18px",
+      }}
+    >
+      ...
+    </span>
+  )}
+
+  {totalPages > 1 && (
+    <button
+      onClick={() =>
+        setCurrentPage(totalPages)
+      }
+      style={{
+        width: "46px",
+        height: "46px",
+        borderRadius: "50%",
+        border:
+          currentPage === totalPages
+            ? "2px solid #60a5fa"
+            : "1px solid #334155",
+        backgroundColor:
+          currentPage === totalPages
+            ? "#2563eb"
+            : "#111827",
+        color: "white",
+        cursor: "pointer",
+        fontWeight:
+          currentPage === totalPages
+            ? "bold"
+            : "normal",
+      }}
+    >
+      {totalPages}
+    </button>
+  )}
 
   <button
     onClick={() =>
@@ -2163,27 +2288,30 @@ onMouseLeave={(e) => {
         Math.min(prev + 1, totalPages)
       )
     }
-    disabled={currentPage === totalPages}
+    disabled={
+      currentPage === totalPages
+    }
     style={{
-      padding: "10px 18px",
-      backgroundColor: "#00319c",
+      width: "46px",
+      height: "46px",
+      borderRadius: "50%",
+      border: "1px solid #334155",
+      backgroundColor:
+        currentPage === totalPages
+          ? "#1e293b"
+          : "#00319c",
       color: "white",
-      border: "none",
-      borderRadius: "8px",
-      opacity: currentPage === totalPages ? 0.5 : 1,
-    transition: "0.2s ease",
-cursor: "pointer",
+      cursor: "pointer",
+      opacity:
+        currentPage === totalPages
+          ? 0.5
+          : 1,
+      fontSize: "18px",
     }}
-    onMouseEnter={(e) => {
-  e.currentTarget.style.transform = "translateY(-2px)";
-}}
-
-onMouseLeave={(e) => {
-  e.currentTarget.style.transform = "translateY(0px)";
-}}
   >
-    Next
+    →
   </button>
+</div>
 </div>
 <Footer />
         </div>

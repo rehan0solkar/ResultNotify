@@ -152,7 +152,10 @@
     }
   }
 }
-
+input[list]::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
