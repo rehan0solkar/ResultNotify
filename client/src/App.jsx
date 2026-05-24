@@ -34,7 +34,30 @@ function App() {
   const resultsPerPage = 10;
   const API_URL = import.meta.env.VITE_API_URL || "https://result-notify.vercel.app";
   const [savedResults, setSavedResults] = useState([]);
+  const getTimeAgo = (date) => {
 
+  const seconds =
+    Math.floor(
+      (new Date() - new Date(date)) / 1000
+    );
+
+  const minutes =
+    Math.floor(seconds / 60);
+
+  const hours =
+    Math.floor(minutes / 60);
+
+  if (minutes < 1)
+    return "just now";
+
+  if (minutes < 60)
+    return `${minutes} mins ago`;
+
+  if (hours < 24)
+    return `${hours} hours ago`;
+
+  return new Date(date).toLocaleDateString();
+};
   useEffect(() => {
   fetch(`${API_URL}/api/results`)
     .then((res) => res.json())
@@ -46,22 +69,23 @@ function App() {
       console.error(error);
       setLoading(false);
     });
+
   fetch(
   `${API_URL}/api/last-checked`
 )
   .then((res) => res.json())
   .then((data) => {
 
-    if (data.lastChecked) {
+if (data.lastChecked) {
 
-  const parsedDate =
-    new Date(data.lastChecked);
+  setLastChecked(
+    getTimeAgo(data.lastChecked)
+  );
 
-  const time = isNaN(parsedDate)
-    ? "Never"
-    : parsedDate.toLocaleString();
+} else {
 
-  setLastChecked(time);
+  setLastChecked("Never");
+
 }
   })
   .catch(() => {
