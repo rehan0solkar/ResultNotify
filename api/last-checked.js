@@ -1,27 +1,28 @@
 import fs from "fs";
 import path from "path";
 
-const filePath = path.join(process.cwd(), "data", "lastchecked.json");
-export default function handler(req, res) {
-
+export default async function handler(req, res) {
   try {
-
     const filePath = path.join(
       process.cwd(),
       "data",
-      "lastChecked.json"
+      "lastchecked.json"
     );
 
-    const data = JSON.parse(
-      fs.readFileSync(filePath, "utf8")
-    );
+    if (!fs.existsSync(filePath)) {
+      return res.status(200).json({
+        lastChecked: "Never",
+      });
+    }
 
-    res.status(200).json(data);
+    const data = fs.readFileSync(filePath, "utf8");
 
+    return res.status(200).json(JSON.parse(data));
   } catch (error) {
+    console.error(error);
 
-    res.status(500).json({
-      error: "Failed to load last checked time",
+    return res.status(500).json({
+      error: error.message,
     });
   }
 }
