@@ -33,31 +33,29 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 10;
   const API_URL = import.meta.env.VITE_API_URL || "https://result-notify.vercel.app";
+  const [, forceUpdate] = useState(0);
   const [savedResults, setSavedResults] = useState([]);
-  const getTimeAgo = (date) => {
+  const formatTimeAgo = (dateString) => {
+    if (!dateString || dateString === "Never") return "Never";
 
-  const seconds =
-    Math.floor(
-      (new Date() - new Date(date)) / 1000
-    );
+    const diff = Math.floor((Date.now() - new Date(dateString)) / 1000);
 
-  const minutes =
-    Math.floor(seconds / 60);
+    if (diff < 5) return "Just now";
 
-  const hours =
-    Math.floor(minutes / 60);
+    const days = Math.floor(diff / 86400);
+    const hours = Math.floor((diff % 86400) / 3600);
+    const mins = Math.floor((diff % 3600) / 60);
+    const secs = diff % 60;
 
-  if (minutes < 1)
-    return "just now";
+    let parts = [];
 
-  if (minutes < 60)
-    return `${minutes} mins ago`;
+    if (days) parts.push(`${days}d`);
+    if (hours) parts.push(`${hours}hr`);
+    if (mins) parts.push(`${mins}min`);
+    if (secs && diff < 3600) parts.push(`${secs}s`);
 
-  if (hours < 24)
-    return `${hours} hours ago`;
-
-  return new Date(date).toLocaleDateString();
-};
+    return parts.slice(0, 2).join(" ") + " ago";
+  };
   useEffect(() => {
   fetch(`${API_URL}/api/results`)
     .then((res) => res.json())
@@ -78,9 +76,7 @@ function App() {
 
 if (data.lastChecked) {
 
-  setLastChecked(
-    getTimeAgo(data.lastChecked)
-  );
+  setLastChecked(data.lastChecked);
 
 } else {
 
@@ -92,6 +88,13 @@ if (data.lastChecked) {
     setLastChecked("Unavailable");
   });
 }, [API_URL]);
+useEffect(() => {
+  const interval = setInterval(() => {
+    forceUpdate((n) => n + 1);
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
 useEffect(() => {
 
   if (!user) return;
@@ -1245,7 +1248,7 @@ screenWidth < 768
                   "8px",
               }}
             >
-            Last checked: {lastChecked}
+            Last checked: {formatTimeAgo(lastChecked)}
             </p>
           </div>
         )
