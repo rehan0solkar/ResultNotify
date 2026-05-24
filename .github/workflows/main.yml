@@ -27,3 +27,11 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
         run: node lib/checkResults.js
+      
+      - name: Commit updated lastchecked file
+        run: |
+         git config user.name "github-actions"
+         git config user.email "github-actions@github.com"
+         git add data/lastchecked.json
+         git commit -m "update last checked" || echo "No changes"
+         git push
