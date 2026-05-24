@@ -2140,37 +2140,14 @@ onMouseLeave={(e) => {
     flexWrap: "wrap",
   }}
 >
-  <button
-    onClick={() =>
-      setCurrentPage((prev) =>
-        Math.max(prev - 1, 1)
-      )
-    }
-    disabled={currentPage === 1}
-    style={{
-      width: "46px",
-      height: "46px",
-      borderRadius: "50%",
-      border: "1px solid #334155",
-      backgroundColor:
-        currentPage === 1
-          ? "#1e293b"
-          : "#be6d0f",
-      color: "white",
-      cursor: "pointer",
-      opacity: currentPage === 1 ? 0.5 : 1,
-      fontSize: "18px",
-    }}
-  >
-    ←
-  </button>
 
   <button
     onClick={() => setCurrentPage(1)}
     style={{
-      width: "46px",
-      height: "46px",
-      borderRadius: "50%",
+      minWidth: "48px",
+height: "48px",
+padding: "0 14px",
+borderRadius: "999px",
       border:
         currentPage === 1
           ? "2px solid #60a5fa"
@@ -2190,7 +2167,7 @@ onMouseLeave={(e) => {
     1
   </button>
 
-  {currentPage > 4 && (
+  {currentPage > 3 && (
     <span
       style={{
         color: "#94a3b8",
@@ -2219,9 +2196,10 @@ onMouseLeave={(e) => {
           setCurrentPage(page)
         }
         style={{
-          width: "46px",
-          height: "46px",
-          borderRadius: "50%",
+          minWidth: "48px",
+height: "48px",
+padding: "0 14px",
+borderRadius: "999px",
           border:
             currentPage === page
               ? "2px solid #60a5fa"
@@ -2242,7 +2220,7 @@ onMouseLeave={(e) => {
       </button>
     ))}
 
-  {currentPage < totalPages - 3 && (
+  {currentPage < totalPages - 2 && (
     <span
       style={{
         color: "#94a3b8",
@@ -2259,9 +2237,10 @@ onMouseLeave={(e) => {
         setCurrentPage(totalPages)
       }
       style={{
-        width: "46px",
-        height: "46px",
-        borderRadius: "50%",
+        minWidth: "48px",
+height: "48px",
+padding: "0 14px",
+borderRadius: "999px",
         border:
           currentPage === totalPages
             ? "2px solid #60a5fa"
@@ -2282,35 +2261,6 @@ onMouseLeave={(e) => {
     </button>
   )}
 
-  <button
-    onClick={() =>
-      setCurrentPage((prev) =>
-        Math.min(prev + 1, totalPages)
-      )
-    }
-    disabled={
-      currentPage === totalPages
-    }
-    style={{
-      width: "46px",
-      height: "46px",
-      borderRadius: "50%",
-      border: "1px solid #334155",
-      backgroundColor:
-        currentPage === totalPages
-          ? "#1e293b"
-          : "#00319c",
-      color: "white",
-      cursor: "pointer",
-      opacity:
-        currentPage === totalPages
-          ? 0.5
-          : 1,
-      fontSize: "18px",
-    }}
-  >
-    →
-  </button>
 </div>
 </div>
 <Footer />
