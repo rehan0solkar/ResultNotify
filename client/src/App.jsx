@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 function App() {
   const [results, setResults] = useState([]);
+  const [lastChecked, setLastChecked] = useState("Loading...");
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [semesterFilter, setSemesterFilter] = useState("All");
@@ -45,6 +46,24 @@ function App() {
       console.error(error);
       setLoading(false);
     });
+  fetch(
+  `${API_URL}/api/last-checked`
+)
+  .then((res) => res.json())
+  .then((data) => {
+
+    if (data.lastChecked) {
+
+      const time = new Date(
+        data.lastChecked
+      ).toLocaleString();
+
+      setLastChecked(time);
+    }
+  })
+  .catch(() => {
+    setLastChecked("Unavailable");
+  });
 }, [API_URL]);
 useEffect(() => {
 
@@ -1199,8 +1218,7 @@ screenWidth < 768
                   "8px",
               }}
             >
-              Last checked:
-              just now
+            Last checked: {lastChecked}
             </p>
           </div>
         )
@@ -2125,6 +2143,7 @@ onMouseLeave={(e) => {
   <ResultCard
     key={result._id || index}
     result={result}
+    results={results}
     savedResults={savedResults}
     saveFavorite={saveFavorite}
   />

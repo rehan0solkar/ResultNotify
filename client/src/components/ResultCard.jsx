@@ -6,6 +6,7 @@ function ResultCard({
   result,
   savedResults,
   saveFavorite,
+  results,
 }) {
   const isSaved = Array.isArray(savedResults) &&
   Array.isArray(savedResults) &&
@@ -49,7 +50,12 @@ item.pdfUrl === result.pdfUrl
           wordBreak: "break-word",
         }}
       >
-        {result.title}
+        {result.title}{" "}
+(
+  {results.filter(
+    (r) => r.title === result.title
+  ).length}
+)
       </h2>
 
       <p
