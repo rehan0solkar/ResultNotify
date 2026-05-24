@@ -54,12 +54,15 @@ function App() {
 
     if (data.lastChecked) {
 
-      const time = new Date(
-        data.lastChecked
-      ).toLocaleString();
+  const parsedDate =
+    new Date(data.lastChecked);
 
-      setLastChecked(time);
-    }
+  const time = isNaN(parsedDate)
+    ? "Never"
+    : parsedDate.toLocaleString();
+
+  setLastChecked(time);
+}
   })
   .catch(() => {
     setLastChecked("Unavailable");
