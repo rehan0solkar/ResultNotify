@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00C2FF&height=220&section=header&text=ResultNotify&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Mumbai%20University%20Result%20Tracking%20Platform&descAlignY=60" />
+</p>
 # <div align="center">ResultNotify</div>
 
 <div align="center">
