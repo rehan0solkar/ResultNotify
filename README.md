@@ -21,9 +21,9 @@
 ResultNotify is a modern web application built to help students track university results in a faster and smarter way.
 Instead of repeatedly checking result websites manually, users can:
 <br>
-<marquee>
-🔔 Subscribe to result updates • 📢 Receive notifications • ❤️ Save important results • 🔍 Search and filter results quickly • 👤 Login securely using Google • 📱 Use the platform smoothly on desktop and mobile devices
-</marquee>
+
+🔔 Subscribe to result updates • 📢 Receive notifications • ❤️ Save important results • 🔍 Search and filter results quickly • 👤 Login securely using Google • 📱 Use the platform smoothly on desktop and mobile devices                     
+<br>
 The project focuses on providing a clean UI, responsive experience, and organized result tracking system.
 
 ---
@@ -155,3 +155,4 @@ https://result-notify.vercel.app
 ### Built By Rehan Solkar
 
 </div>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00C2FF&height=120&section=footer"/>
