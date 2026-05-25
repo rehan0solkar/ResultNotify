@@ -1,9 +1,8 @@
+<img src="https://komarev.com/ghpvc/?username=rehan0solkar&label=Project+Views&color=blueviolet&style=for-the-badge" />
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00C2FF&height=220&section=header&text=ResultNotify&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Mumbai%20University%20Result%20Tracking%20Platform&descAlignY=60" />
 </p>
-<img src="https://komarev.com/ghpvc/?username=rehan0solkar&label=Project+Views&color=blueviolet&style=for-the-badge" />
 <div align="center">
-<br>
 <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=22&pause=2000&color=7C3AED&center=true&vCenter=true&width=500&lines=Modern+Dark+UI;Responsive+Frontend;Mumbai+University+Result+Platform" />
 
 <br>
