@@ -4,7 +4,7 @@
 </p>
 <div align="center">
 <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=22&pause=2000&color=7C3AED&center=true&vCenter=true&width=500&lines=Modern+Dark+UI;Responsive+Frontend;Mumbai+University+Result+Platform" />
-
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00C2FF&height=120&section=footer"/>
 <br>
 <br>
 
@@ -155,4 +155,3 @@ https://result-notify.vercel.app
 ### Built By Rehan Solkar
 
 </div>
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00C2FF&height=120&section=footer"/>
