@@ -1,14 +1,9 @@
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:8A2BE2,100:00C2FF&height=220&section=header&text=ResultNotify&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Mumbai%20University%20Result%20Tracking%20Platform&descAlignY=60" />
 </p>
-# <div align="center">ResultNotify</div>
-
+<img src="https://komarev.com/ghpvc/?username=rehan0solkar&label=Project+Views&color=blueviolet&style=for-the-badge" />
 <div align="center">
-
-### Mumbai University Result Tracking Platform
-
 <br>
-
 <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=22&pause=2000&color=7C3AED&center=true&vCenter=true&width=500&lines=Modern+Dark+UI;Responsive+Frontend;Mumbai+University+Result+Platform" />
 
 <br>
@@ -26,14 +21,14 @@
 
 ResultNotify is a modern web application built to help students track university results in a faster and smarter way.
 Instead of repeatedly checking result websites manually, users can:
-
+<marquee>
 🔔 Subscribe to result updates
 📢 Receive notifications
 ❤️ Save important results
 🔍 Search and filter results quickly
 👤 Login securely using Google
 📱 Use the platform smoothly on desktop and mobile devices
-
+</marquee>
 The project focuses on providing a clean UI, responsive experience, and organized result tracking system.
 
 ---
