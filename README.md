@@ -21,9 +21,17 @@
 
 ## About
 
-ResultNotify is a responsive frontend project focused on creating a clean and modern Mumbai University result browsing experience.
+ResultNotify is a modern web application built to help students track university results in a faster and smarter way.
+Instead of repeatedly checking result websites manually, users can:
 
-The project currently includes a dark themed interface, reusable UI components, filtering system, result cards and deployed frontend structure.
+🔔 Subscribe to result updates
+📢 Receive notifications
+❤️ Save important results
+🔍 Search and filter results quickly
+👤 Login securely using Google
+📱 Use the platform smoothly on desktop and mobile devices
+
+The project focuses on providing a clean UI, responsive experience, and organized result tracking system.
 
 ---
 
@@ -87,11 +95,56 @@ ResultNotify/
 ## Tech Stack
 
 ```txt
-Frontend  : React + Vite
-Routing   : React Router DOM
-Backend   : Node.js
-Database  : MongoDB
-Deploy    : Vercel
+Frontend    : React + Vite
+Scrapping   : Cheerio
+Backend     : Node.js
+Database    : MongoDB
+API request : Axios
+Deploy      : Vercel
+```
+
+
+
+# Local Development Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/resultnotify.git
+```
+
+---
+
+## Install Frontend Dependencies
+
+```bash
+cd client
+npm install
+```
+
+---
+
+## Install Backend Dependencies
+
+```bash
+cd server
+npm install
+```
+
+---
+
+## Run Frontend
+
+```bash
+npm run dev
+```
+
+---
+
+## Run Backend
+
+```bash
+node server.js
 ```
 
 ---
