@@ -20,14 +20,8 @@
 
 ResultNotify is a modern web application built to help students track university results in a faster and smarter way.
 Instead of repeatedly checking result websites manually, users can:
-<marquee>
-🔔 Subscribe to result updates
-📢 Receive notifications
-❤️ Save important results
-🔍 Search and filter results quickly
-👤 Login securely using Google
-📱 Use the platform smoothly on desktop and mobile devices
-</marquee>
+<br>
+<marquee>🔔 Subscribe to result updates 📢 Receive notifications ❤️ Save important results 🔍 Search and filter results quickly 👤 Login securely using Google 📱 Use the platform smoothly on desktop and mobile devices</marquee>
 The project focuses on providing a clean UI, responsive experience, and organized result tracking system.
 
 ---
